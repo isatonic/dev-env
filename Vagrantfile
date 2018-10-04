@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
         # boxes will only be checked for updates when the user runs
         # `vagrant box outdated`. This is not recommended.
         config.vm.box_check_update = false
-        config.vbguest.auto_update = false
+        # config.vbguest.auto_update = false
 
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
@@ -70,6 +70,7 @@ Vagrant.configure("2") do |config|
         config.vm.provision "shell", inline: <<-SHELL
                 sudo yum makecache fast
                 sudo yum -y update
+                sudo mkdir /vagrant/docker/data/db
         SHELL
         # config.vm.provision "shell", inline: <<-SHELL
         #         sudo yum makecache fast
