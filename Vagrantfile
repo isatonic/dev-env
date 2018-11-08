@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
         config.vm.network "forwarded_port", guest: 80, host: 10080
         config.vm.network "forwarded_port", guest: 8080, host: 18080
         config.vm.network "forwarded_port", guest: 7080, host: 17080
-        config.vm.network "forwarded_port", guest: 3306, host: 3306
+        config.vm.network "forwarded_port", guest: 3306, host: 13306
 
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine and only allow access
@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
 
         # Create a private network, which allows host-only access to the machine
         # using a specific IP.
-        # config.vm.network "private_network", ip: "192.168.33.11"
+        config.vm.network "private_network", ip: "192.168.33.11"
 
         # Create a public network, which generally matched to bridged network.
         # Bridged networks make the machine appear as another physical device on
@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
         config.vm.provision "shell", inline: <<-SHELL
                 sudo yum makecache fast
                 sudo yum -y update
-                sudo mkdir /vagrant/docker/data/db
+                sudo mkdir -p /vagrant/docker/data/db
         SHELL
         # config.vm.provision "shell", inline: <<-SHELL
         #         sudo yum makecache fast

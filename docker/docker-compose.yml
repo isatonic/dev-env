@@ -26,11 +26,13 @@ services:
 
         db:
                 image: mysql:8
-                env_file: ./.env
+                environment:
+                        - MYSQL_ROOT_PASSWORD=root
                 ports:
                         - "3306:3306"
                 volumes:
-                        - ./data/db:/var/lib/mysql
+                    - ./data/www/schema:/docker-entrypoint-initdb.d:rw
+                    - ./data/db/data:/var/lib/mysql:rw
                 tty: true
                 command: --innodb-use-native-aio=0
 
