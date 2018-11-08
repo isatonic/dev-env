@@ -49,22 +49,27 @@ $ vagrant plugin install vagrant-vbguest vagrant-share vagrant-hostsupdater vagr
 ### 必要ファイルの配置
 
 1. 右上の緑色のボタンから「Download ZIP」(または[ここ](https://github.com/isatonic/dev-env/archive/master.zip))
-2. dev-env-masterを好きなところに配置(例: `C:￥Users￥%USERNAME%￥Desktop￥dev-env-master`)
+2. `dev-env-master`を好きなところに配置
 
-### サーバ群の初回起動
+### 作業ディレクトリの準備
 
-1. コマンドプロンプト(cmd)で`dev-env-master`に入る
+初期化スクリプトを実行
 
-例:
-
-```
-$ cd C:\Users\%USERNAME%\Desktop\dev-env-master
-```
-
-2. 以下コマンドでサーバ群を起動, サーバファイルなどのダウンロード
+- Windows: `dev-env-master\init.bat`を実行
+- Mac, Linuxなど:
 
 ```sh
-$ vagrant up
+cd path/to/dev-env-master
+sh ./init.sh
+```
+
+### サーバ群のセットアップ
+
+1. コマンドラインで`dev-env-master`に移動
+2. 以下を実行:
+
+```sh
+vagrant up
 ```
 
 ※ 少し時間かかります
@@ -74,28 +79,11 @@ $ vagrant up
 4. 下記コマンドでサーバ群を終了
 
 ```sh
-$ vagrant suspend
+$ vagrant halt
 ```
 
-以降, 作業を始めるときは`vagrant up`, 終えるときは`vagrant suspend`をする.
+以降, 作業を始めるときは`vagrant up`, 終えるときは`vagrant halt`.
 
 `isatonic.../docker/data/www/html`がXAMPPでいう"htdocs"
 
----
-
-以下は取り敢えず放置
-
----
-
-### ファイルをgitで管理
-
-1. [ここ](https://haniwaman.com/git-for-windows/)にしたがってGit for Windowsをインストール
-2. Git bashから`dev-env-master`に入り, githubからファイルをclone
-
-例: デスクトップに`dev-env-master`がある場合
-
-```
-$ cd Desktop/dev-env-master
-$ git clone https://github.com/...
-```
 
